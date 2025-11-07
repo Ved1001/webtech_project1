@@ -10,7 +10,7 @@ public class EmailUtil {
 
     public static void sendEmail(String toEmail, String subject, String body) throws MessagingException, UnsupportedEncodingException {
         final String fromEmail = "vedshrimali123@gmail.com"; // Your SMTP/email
-        final String password = "lyva legg afna unsb"; // SMTP password or app password
+        final String password = "Enter Your Password"; // SMTP password or app password
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
