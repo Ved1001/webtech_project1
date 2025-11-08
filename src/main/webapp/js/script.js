@@ -126,30 +126,29 @@ function updateTotalAmount(pricePerPerson, persons) {
     }
 }
 
-// Form submission
+// Form submission with AJAX (XMLHttpRequest)
 const bookingForm = document.getElementById('bookingForm');
 if (bookingForm) {
     bookingForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
         const name = this.querySelector('input[name="name"]').value.trim();
         const email = this.querySelector('input[name="email"]').value.trim();
         const contact = this.querySelector('input[name="contact"]').value.trim();
         const persons = this.querySelector('input[name="persons"]').value;
 
         if (!name || !email || !contact) {
-            e.preventDefault();
             alert('❌ Please fill all required fields');
             return false;
         }
 
         if (persons < 1 || persons > 10) {
-            e.preventDefault();
             alert('❌ Number of travelers must be between 1 and 10');
             return false;
         }
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-            e.preventDefault();
             alert('❌ Please enter a valid email address');
             return false;
         }
@@ -161,12 +160,48 @@ if (bookingForm) {
             submitBtn.classList.add('loading');
         }
 
-        console.log('Form submitting...');
-        return true;
+        // Create XMLHttpRequest object
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/your-booking-endpoint', true); // replace with your actual endpoint
+
+        xhr.onload = function() {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                alert('✅ Booking successful! Thank you.');
+                bookingForm.reset();
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-credit-card"></i> Proceed to Payment';
+                    submitBtn.classList.remove('loading');
+                }
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            } else {
+                alert('❌ Booking failed: ' + xhr.statusText);
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-credit-card"></i> Proceed to Payment';
+                    submitBtn.classList.remove('loading');
+                }
+            }
+        };
+
+        xhr.onerror = function() {
+            alert('❌ Request failed.');
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-credit-card"></i> Proceed to Payment';
+                submitBtn.classList.remove('loading');
+            }
+        };
+
+        const formData = new FormData(bookingForm);
+        xhr.send(formData);
+
+        return false;
     });
 }
 
-// Contact form
+// Contact form validation
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
@@ -203,7 +238,7 @@ window.addEventListener('load', function() {
     const paymentStatus = urlParams.get('payment');
 
     if (paymentStatus === 'success') {
-        alert('✅ Payment Successful! Thank you for booking with Ved Travels.');
+        alert('✅ Payment Successful! Thank you for booking with SafarSathi.');
         window.history.replaceState({}, document.title, window.location.pathname);
     } else if (paymentStatus === 'failed') {
         alert('❌ Payment Failed. Please try again.');
@@ -259,4 +294,4 @@ if (newsletterForm) {
     });
 }
 
-console.log('✈️ Ved Travels Loaded!');
+console.log('✈️ SafarSathi Loaded!');

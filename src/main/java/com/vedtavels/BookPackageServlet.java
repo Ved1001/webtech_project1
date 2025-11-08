@@ -12,8 +12,8 @@ import com.razorpay.*;
 @WebServlet("/BookPackageServlet")
 public class BookPackageServlet extends HttpServlet {
 
-    private static final String RAZORPAY_KEY_ID = "rzp_test_RUBd0H1ahs22nj";
-    private static final String RAZORPAY_KEY_SECRET = "XZqTS7srVjO7Y03J7YSxMsVP";
+    private static final String RAZORPAY_KEY_ID = "enter your id";
+    private static final String RAZORPAY_KEY_SECRET = "enter your id";
 
     // Currency conversion rate: 1 USD = 90 INR
     private static final int USD_TO_INR = 90;
@@ -120,14 +120,14 @@ public class BookPackageServlet extends HttpServlet {
             System.out.println("Razorpay Order Created: " + orderId);
             System.out.println("===================\n");
 
-            // Inserted email sending code here without changing existing logic
+            // Email sending with updated branding
             try {
                 String emailBody = "Dear " + name + ",\n\nThank you for booking the " + packageType +
                         " package to " + destination + ".\nYour order ID: " + orderId +
                         "\nTotal Amount: ₹" + discountedAmountINR +
-                        "\n\nWe appreciate your purchase!\n\nRegards,\nVed Travels Team";
+                        "\n\nWe appreciate your purchase!\n\nRegards,\nSafarSathi Team";
 
-                com.vedtravels.utils.EmailUtil.sendEmail(email, "Booking Confirmation - Ved Travels", emailBody);
+                com.vedtravels.utils.EmailUtil.sendEmail(email, "Booking Confirmation - SafarSathi", emailBody);
             } catch (Exception e) {
                 e.printStackTrace();  // Log error but continue
             }

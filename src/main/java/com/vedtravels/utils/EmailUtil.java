@@ -27,7 +27,7 @@ public class EmailUtil {
         Session session = Session.getInstance(props, auth);
 
         Message msg = new MimeMessage(session);
-        msg.setFrom(new InternetAddress(fromEmail, "Ved Travels"));
+        msg.setFrom(new InternetAddress(fromEmail, "SafarSathi - हर सफर का साथी SafarSathi"));
         msg.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
         msg.setSubject(subject);
         msg.setSentDate(new java.util.Date());

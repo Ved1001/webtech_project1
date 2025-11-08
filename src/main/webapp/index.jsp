@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ved Travels - Explore the World with Us</title>
+    <title>SafarSathi - Explore the World with Us</title>
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -14,7 +14,8 @@
         <div class="container">
             <div class="logo">
                 <i class="fas fa-plane-departure"></i>
-                <h1>Ved Travels</h1>
+                <h1>SafarSathi</h1>
+                <p style="font-size: 14px; font-style: italic; margin-left: 10px; display: inline-block;">हर सफर का साथी SafarSathi</p>
             </div>
             <nav>
                 <ul class="nav-links">
@@ -38,7 +39,7 @@
         <div class="hero-content">
             <h2 class="hero-title">🌍 Explore the World with Us</h2>
             <p class="hero-subtitle">Create unforgettable memories with our curated travel experiences</p>
-            <p class="hero-description">Whether you're planning a family vacation, a romantic getaway, or a solo adventure, Ved Travels offers tailor-made packages to suit your style. With a passion for exploration and commitment to comfort, we turn your travel dreams into reality.</p>
+            <p class="hero-description">Whether you're planning a family vacation, a romantic getaway, or a solo adventure, SafarSathi offers tailor-made packages to suit your style. With a passion for exploration and commitment to comfort, we turn your travel dreams into reality.</p>
             <a href="#packages" class="btn-primary">
                 <i class="fas fa-compass"></i> Explore Packages
             </a>
@@ -51,7 +52,7 @@
     <!-- Why Choose Us -->
     <section class="why-choose">
         <div class="container">
-            <h2 class="section-title">✨ Why Choose Ved Travels?</h2>
+            <h2 class="section-title">✨ Why Choose SafarSathi?</h2>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -424,11 +425,12 @@
             </div>
         </div>
     </section>
+
     <!-- Founders Section -->
     <section class="founders">
         <div class="container">
             <h2 class="section-title">👥 Meet Our Founders</h2>
-            <p class="section-subtitle">The passionate team behind Ved Travels</p>
+            <p class="section-subtitle">The passionate team behind SafarSathi</p>
 
             <div class="founders-grid">
                 <!-- Founder 1: Ved Shrimali -->
@@ -459,7 +461,7 @@
                 <!-- Founder 2: Kashish Thakor -->
                 <div class="founder-card">
                     <div class="founder-image">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&q=80" alt="Kashish Thakor">
+                        <img src="<%= request.getContextPath() %>/photo/kashish.jpg" alt="Kashish Thakor">
                         <div class="founder-badge">Co-Founder</div>
                     </div>
                     <div class="founder-info">
@@ -484,64 +486,45 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+ <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title">📞 Get in Touch</h2>
-            <p class="section-subtitle">Have questions? We're here to help!</p>
+            <p class="section-subtitle">Have questions? We are here to help!</p>
             <div class="contact-content">
                 <div class="contact-info">
                     <h3>Contact Information</h3>
                     <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div>
-                            <strong>Address</strong>
-                            <p>123 Travel Street, Tourism City<br>New York, NY 12345</p>
-                        </div>
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div><strong>Address</strong><p>123 Travel Street, Tourism City<br>New York, NY 12345</p></div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div>
-                            <strong>Phone</strong>
-                            <p>(+91) 7359174906</p>
-                        </div>
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div><strong>Phone</strong><p>(+91) 7359174906</p></div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <strong>Email</strong>
-                            <p>info@vedtravels.com</p>
-                        </div>
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div><strong>Email</strong><p>info@safarsathi.com</p></div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div>
-                            <strong>Working Hours</strong>
-                            <p>Mon - Sat: 9:00 AM - 6:00 PM</p>
-                        </div>
+                        <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                        <div><strong>Working Hours</strong><p>Mon - Sat: 9:00 AM - 6:00 PM</p></div>
                     </div>
                 </div>
-                <form action="<%= request.getContextPath() %>/ContactServlet" method="POST" class="contact-form">
+
+                <form action="contact_process.jsp" method="POST" class="contact-form">
                     <h3>Send us a Message</h3>
                     <div class="form-group">
                         <label><i class="fas fa-user"></i> Your Name *</label>
-                        <input type="text" name="name" placeholder="John Doe" required>
+                        <input type="text" name="name" placeholder="John Doe" required />
                     </div>
                     <div class="form-group">
                         <label><i class="fas fa-envelope"></i> Your Email *</label>
-                        <input type="email" name="email" placeholder="john@example.com" required>
+                        <input type="email" name="email" placeholder="john@example.com" required />
                     </div>
                     <div class="form-group">
                         <label><i class="fas fa-phone"></i> Phone Number</label>
-                        <input type="tel" name="phone" placeholder="+91 1234567890">
+                        <input type="tel" name="phone" placeholder="+91 1234567890" />
                     </div>
                     <div class="form-group">
                         <label><i class="fas fa-map-marked-alt"></i> Interested Destination</label>
@@ -570,7 +553,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3><i class="fas fa-plane-departure"></i> Ved Travels</h3>
+                    <h3><i class="fas fa-plane-departure"></i> SafarSathi</h3>
                     <p>Making your travel dreams come true with exceptional service and unforgettable experiences since 2020.</p>
                     <div class="social-links">
                         <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
@@ -607,7 +590,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Ved Travels. All rights reserved. | Designed with <i class="fas fa-heart"></i> for travelers</p>
+                <p>&copy; 2025 SafarSathi. All rights reserved. | Designed with <i class="fas fa-heart"></i> for travelers</p>
             </div>
         </div>
     </footer>
